@@ -1,8 +1,15 @@
 #!/bin/ash
 
-cd /var/www/html/wordpress
+cd /var/www/html
+mkdir -p wordpress
 
-if ! wp core is-installed; then
+if [ -z "$(ls /var/www/html/wordpress)" ]; then
+	curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar;
+	chmod +x wp-cli.phar;
+	mv wp-cli.phar /usr/local/bin/wp;
+	wp core download --locale=ja --path=/var/www/html/wordpress --version=6.0
+
+	cd wordpress
 	wp config create --skip-check \
 		  --dbname=dbname \
 		  --dbuser=dbuser \
@@ -16,5 +23,4 @@ if ! wp core is-installed; then
 	  --admin_email=info@example.com;
 fi
 
-rc-service nginx start
 supervisord -c /etc/supervisord.conf

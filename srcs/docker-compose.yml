@@ -1,25 +1,43 @@
 version: '3.8'
 
 services:
-  # nginx:
-  #   build: ./requirements/nginx
+  nginx:
+    image: my_nginx
+    build: ./requirements/nginx
+    container_name: nginx
+    networks:
+      - inception-network
+    ports:
+      - "443:443"
+    volumes:
+      - wordpress:/var/www/html/wordpress
 
   wordpress:
+    image: my_wordpress
     build: ./requirements/wordpress
     container_name: wordpress
     networks:
       - inception-network
     depends_on:
       - mariadb
-    ports:
-      - "443:443"
+    volumes:
+      - wordpress:/var/www/html/wordpress
 
   mariadb:
+    image: my_mariadb
     build: ./requirements/mariadb
     container_name: mariadb
     networks:
       - inception-network
+    volumes:
+      - mariadb:/var/lib/mysql
 
 networks:
   inception-network:
     name: inception-network
+
+volumes:
+  wordpress:
+    name: wordpress
+  mariadb:
+    name: mariadb
