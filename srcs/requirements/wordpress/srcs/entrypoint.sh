@@ -16,7 +16,7 @@ if [ -z "$(ls /var/www/html/wordpress)" ]; then
 		  --dbpass=dbpass \
 		  --dbhost=mariadb;
     wp core install \
-	  --url=https://localhost \
+	  --url=https://mkamei.42.fr \
 	  --title=title \
 	  --admin_user=supervisor \
 	  --admin_password=strongpassword \
