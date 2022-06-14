@@ -7,6 +7,7 @@ services:
     container_name: nginx
     networks:
       - inception-network
+    restart: on-failure
     ports:
       - "443:443"
     volumes:
@@ -18,6 +19,7 @@ services:
     container_name: wordpress
     networks:
       - inception-network
+    restart: on-failure
     depends_on:
       - mariadb
     volumes:
@@ -29,6 +31,7 @@ services:
     container_name: mariadb
     networks:
       - inception-network
+    restart: on-failure
     volumes:
       - mariadb:/var/lib/mysql
 
@@ -39,5 +42,13 @@ networks:
 volumes:
   wordpress:
     name: wordpress
+    driver_opts:
+      o: bind
+      type: none
+      device: /home/mkamei/data/wordpress
   mariadb:
     name: mariadb
+    driver_opts:
+      o: bind
+      type: none
+      device: /home/mkamei/data/mariadb
