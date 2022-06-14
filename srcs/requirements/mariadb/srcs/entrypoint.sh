@@ -11,6 +11,8 @@ if [ -z "$(ls /var/lib/mysql)" ]; then
 		CREATE DATABASE dbname;
 		CREATE USER 'dbuser'@'%' identified by 'dbpass';
 		GRANT ALL PRIVILEGES ON dbname.* TO 'dbuser'@'%';
+		ALTER USER 'root'@'localhost' IDENTIFIED BY 'root';
+		FLUSH PRIVILEGES;
 	EOSQL
 	rc-service mariadb stop
 fi
