@@ -24,6 +24,16 @@ services:
       - mariadb
     volumes:
       - wordpress:/var/www/html/wordpress
+    environment:
+      DB_WP_NAME: ${DB_WP_NAME}
+      DB_WP_USER_NAME: ${DB_WP_USER_NAME}
+      DB_WP_USER_PASS: ${DB_WP_USER_PASS}
+      DB_HOST: ${DB_HOST}
+      DOMAIN_NAME: ${DOMAIN_NAME}
+      WP_TITLE: ${WP_TITLE}
+      WP_ADMIN_USER: ${WP_ADMIN_USER}
+      WP_ADMIN_PASS: ${WP_ADMIN_PASS}
+      WP_ADMIN_EMAIL: ${WP_ADMIN_EMAIL}
 
   mariadb:
     image: my_mariadb
@@ -34,6 +44,11 @@ services:
     restart: on-failure
     volumes:
       - mariadb:/var/lib/mysql
+    environment:
+      DB_WP_NAME: ${DB_WP_NAME}
+      DB_WP_USER_NAME: ${DB_WP_USER_NAME}
+      DB_WP_USER_PASS: ${DB_WP_USER_PASS}
+      DB_ROOT_USER_PASS: ${DB_ROOT_USER_PASS}
 
 networks:
   inception-network:

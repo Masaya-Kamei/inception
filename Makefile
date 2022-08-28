@@ -1,26 +1,26 @@
 SRCSDIR	= ./srcs
 
-all: setup up
+all: up
 
-up:
+up: setup
 	docker-compose -f $(SRCSDIR)/docker-compose.yml up -d
 
 down:
 	docker-compose -f $(SRCSDIR)/docker-compose.yml down
 
-build:
+build: setup
 	docker-compose -f $(SRCSDIR)/docker-compose.yml up -d --build
 
-build_no_cache:
+build_no_cache: setup
 	docker-compose -f $(SRCSDIR)/docker-compose.yml build --no-cache
 	docker-compose -f $(SRCSDIR)/docker-compose.yml up -d
 
 clean:
-	docker-compose -f $(SRCSDIR)/docker-compose.yml down
-	docker rmi my_nginx my_mariadb my_wordpress
-	docker volume rm wordpress mariadb
-	sudo mv /etc/hosts.bak /etc/hosts
-	sudo rm -rf /home/mkamei
+	- docker-compose -f $(SRCSDIR)/docker-compose.yml down
+	- docker rmi my_nginx my_mariadb my_wordpress
+	- docker volume rm wordpress mariadb
+	- sudo mv /etc/hosts.bak /etc/hosts
+	- sudo rm -rf /home/mkamei
 
 setup:
 	@if [ -z `cat /etc/hosts | grep mkamei` ]; then \

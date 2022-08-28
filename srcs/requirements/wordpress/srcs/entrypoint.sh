@@ -11,16 +11,16 @@ if [ -z "$(ls /var/www/html/wordpress)" ]; then
 
 	cd wordpress
 	wp config create --skip-check \
-		  --dbname=dbname \
-		  --dbuser=dbuser \
-		  --dbpass=dbpass \
-		  --dbhost=mariadb;
+		  --dbname=$DB_WP_NAME \
+		  --dbuser=$DB_WP_USER_NAME \
+		  --dbpass=$DB_WP_USER_PASS \
+		  --dbhost=$DB_HOST;
     wp core install \
-	  --url=https://mkamei.42.fr \
-	  --title=title \
-	  --admin_user=supervisor \
-	  --admin_password=strongpassword \
-	  --admin_email=info@example.com;
+	  --url=https://$DOMAIN_NAME \
+	  --title=$WP_TITLE \
+	  --admin_user=$WP_ADMIN_USER \
+	  --admin_password=$WP_ADMIN_PASS \
+	  --admin_email=$WP_ADMIN_EMAIL;
 fi
 
 supervisord -c /etc/supervisord.conf
