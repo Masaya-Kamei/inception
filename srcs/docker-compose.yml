@@ -22,6 +22,7 @@ services:
     restart: on-failure
     depends_on:
       - mariadb
+      - redis
     volumes:
       - wordpress:/var/www/html/wordpress
     environment:
@@ -49,6 +50,14 @@ services:
       DB_WP_USER_NAME: ${DB_WP_USER_NAME}
       DB_WP_USER_PASS: ${DB_WP_USER_PASS}
       DB_ROOT_USER_PASS: ${DB_ROOT_USER_PASS}
+
+  redis:
+    image: my_redis
+    build: ./requirements/bonus/redis
+    container_name: redis
+    networks:
+      - inception-network
+    restart: on-failure
 
 networks:
   inception-network:
