@@ -12,12 +12,12 @@ RUN     set -ex; \
         touch /run/openrc/softlevel; \
         rc-status
 
-COPY	./srcs/supervisord.conf /etc/
-COPY	./srcs/entrypoint.sh /usr/bin/
-COPY	./srcs/mariadb-server.cnf /etc/my.cnf.d/
+COPY	./tools/supervisord.conf /etc/
+COPY	./tools/entrypoint.sh /usr/bin/
+COPY	./conf/mariadb-server.cnf /etc/my.cnf.d/
 RUN		set -ex; \
 		chmod +r /etc/supervisord.conf; \
-		chmod +r /etc/my.cnf.d/mariadb-server.cnf; \
-		chmod +x /usr/bin/entrypoint.sh
+		chmod +x /usr/bin/entrypoint.sh; \
+		chmod +r /etc/my.cnf.d/mariadb-server.cnf
 
 ENTRYPOINT	["entrypoint.sh"]

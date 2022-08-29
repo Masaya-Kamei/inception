@@ -19,9 +19,9 @@ RUN		openssl req -newkey rsa:4096 -x509 -sha256 \
 			-days 3650 -nodes -out server.crt -keyout server.key \
 			-subj "/C=JP/ST=Tokyo/L=Minato-ku/O=42Tokyo/OU=August/CN=example.com"
 
-COPY	./srcs/supervisord.conf /etc/
-COPY	./srcs/entrypoint.sh /usr/bin/
-COPY	./srcs/default.conf /etc/nginx/http.d/
+COPY	./tools/supervisord.conf /etc/
+COPY	./tools/entrypoint.sh /usr/bin/
+COPY	./conf/default.conf /etc/nginx/http.d/
 RUN		set -ex; \
 		chmod +r /etc/supervisord.conf; \
 		chmod +x /usr/bin/entrypoint.sh; \

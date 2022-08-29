@@ -16,12 +16,12 @@ RUN     set -ex; \
         touch /run/openrc/softlevel; \
         rc-status
 
-COPY	./srcs/supervisord.conf /etc/
-COPY	./srcs/entrypoint.sh /usr/bin/
-COPY	./srcs/www.conf /etc/php8/php-fpm.d/
+COPY	./tools/supervisord.conf /etc/
+COPY	./tools/entrypoint.sh /usr/bin/
+COPY	./conf/www.conf /etc/php8/php-fpm.d/
 RUN		set -ex; \
 		chmod +r /etc/supervisord.conf; \
-		chmod +r /etc/php8/php-fpm.d/www.conf; \
-		chmod +x /usr/bin/entrypoint.sh
+		chmod +x /usr/bin/entrypoint.sh; \
+		chmod +r /etc/php8/php-fpm.d/www.conf
 
 ENTRYPOINT	["entrypoint.sh"]
