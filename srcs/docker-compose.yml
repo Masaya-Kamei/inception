@@ -59,6 +59,16 @@ services:
       - inception-network
     restart: on-failure
 
+  adminer:
+    image: my_adminer
+    build: ./requirements/bonus/adminer
+    container_name: adminer
+    networks:
+      - inception-network
+    restart: on-failure
+    ports:
+      - "9000:443"
+
 networks:
   inception-network:
     name: inception-network
