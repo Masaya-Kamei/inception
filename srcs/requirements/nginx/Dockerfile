@@ -3,16 +3,9 @@ FROM	alpine:3.16.0
 RUN		set -ex; \
 		apk update; \
 		apk add --no-cache \
-			vim openrc supervisor nginx openssl; \
+			vim supervisor nginx openssl; \
 		mkdir /var/log/supervisord; \
 		rm -rf /var/cache/apk/*
-
-RUN     set -ex; \
-		sed -i -e 's/hostname $opts/# hostname $opts/' /etc/init.d/hostname; \
-		echo 'rc_provide="loopback net"' >> /etc/rc.conf; \
-        mkdir /run/openrc; \
-        touch /run/openrc/softlevel; \
-        rc-status
 
 WORKDIR /etc/nginx
 RUN		openssl req -newkey rsa:4096 -x509 -sha256 \
