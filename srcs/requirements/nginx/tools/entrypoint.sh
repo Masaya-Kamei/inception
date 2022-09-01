@@ -1,3 +1,3 @@
 #!/bin/ash
 
-supervisord -c /etc/supervisord.conf
+exec nginx -g "daemon off;"

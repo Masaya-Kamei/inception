@@ -1,3 +1,3 @@
 #!/bin/ash
 
-supervisord -c /etc/supervisord.conf
+exec redis-server /etc/redis.conf

@@ -8,4 +8,4 @@ if [ ! -d /var/www/html/wordpress/upload ]; then
     chmod a+w /var/www/html/wordpress/upload    
 fi
 
-supervisord -c /etc/supervisord.conf
+exec vsftpd /etc/vsftpd/vsftpd.conf

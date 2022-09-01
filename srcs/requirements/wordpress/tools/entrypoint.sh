@@ -40,4 +40,4 @@ if [ $? -ne 0 ]; then
 	cp wp-content/plugins/redis-cache/includes/object-cache.php wp-content/
 fi
 
-supervisord -c /etc/supervisord.conf
+exec php-fpm8 -F
