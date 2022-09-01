@@ -3,13 +3,8 @@ FROM	alpine:3.16.0
 RUN		set -ex; \
 		apk update; \
 		apk add --no-cache \
-			vim openrc mariadb mariadb-client; \
+			vim mariadb mariadb-client; \
 		rm -rf /var/cache/apk/*
-
-RUN     set -ex; \
-        mkdir /run/openrc; \
-        touch /run/openrc/softlevel; \
-        rc-status
 
 COPY	./tools/entrypoint.sh /usr/bin/
 COPY	./conf/mariadb-server.cnf /etc/my.cnf.d/
