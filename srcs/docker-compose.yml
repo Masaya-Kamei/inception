@@ -12,6 +12,7 @@ services:
       - "443:443"
     volumes:
       - wordpress:/var/www/html/wordpress
+      - adminer:/var/www/html/adminer
 
   wordpress:
     image: my_wordpress
@@ -66,6 +67,8 @@ services:
     networks:
       - inception-network
     restart: on-failure
+    volumes:
+      - adminer:/var/www/html/adminer
 
   ftp:
     image: my_ftp
@@ -97,3 +100,9 @@ volumes:
       o: bind
       type: none
       device: /home/mkamei/data/mariadb
+  adminer:
+    name: adminer
+    driver_opts:
+      o: bind
+      type: none
+      device: /home/mkamei/data/adminer
