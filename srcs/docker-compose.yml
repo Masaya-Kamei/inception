@@ -66,8 +66,19 @@ services:
     networks:
       - inception-network
     restart: on-failure
+
+  ftp:
+    image: my_ftp
+    build: ./requirements/bonus/ftp
+    container_name: ftp
+    restart: on-failure
     ports:
-      - "9000:443"
+      - "21:21"
+      - "50001:50001"
+    volumes:
+      - wordpress:/var/www/html/wordpress
+    environment:
+      FTP_TEST_USER_PASS: ${FTP_TEST_USER_PASS}
 
 networks:
   inception-network:
