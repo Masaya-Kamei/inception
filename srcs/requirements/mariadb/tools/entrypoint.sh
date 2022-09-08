@@ -2,7 +2,7 @@
 
 if [ -z "$(ls /var/lib/mysql)" ]; then
 	mariadb-install-db --user=mysql --datadir=/var/lib/mysql
-	mariadbd-safe --user=mysql --datadir=/var/lib/mysql &
+	mariadbd --user=mysql --datadir=/var/lib/mysql &
     while ! echo 'SELECT 1' | mysql -uroot &> /dev/null;
     do
         sleep 0.1
@@ -19,4 +19,4 @@ if [ -z "$(ls /var/lib/mysql)" ]; then
 	pkill mariadb
 fi
 
-exec mariadbd-safe --user=mysql --datadir=/var/lib/mysql
+exec mariadbd --user=mysql --datadir=/var/lib/mysql

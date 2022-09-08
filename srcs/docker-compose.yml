@@ -5,6 +5,7 @@ services:
     image: my_nginx
     build: ./requirements/nginx
     container_name: nginx
+    init: true
     networks:
       - inception-network
     restart: on-failure
@@ -18,6 +19,7 @@ services:
     image: my_wordpress
     build: ./requirements/wordpress
     container_name: wordpress
+    init: true
     networks:
       - inception-network
     restart: on-failure
@@ -41,6 +43,7 @@ services:
     image: my_mariadb
     build: ./requirements/mariadb
     container_name: mariadb
+    init: true
     networks:
       - inception-network
     restart: on-failure
@@ -56,6 +59,7 @@ services:
     image: my_redis
     build: ./requirements/bonus/redis
     container_name: redis
+    init: true
     networks:
       - inception-network
     restart: on-failure
@@ -64,6 +68,7 @@ services:
     image: my_adminer
     build: ./requirements/bonus/adminer
     container_name: adminer
+    init: true
     networks:
       - inception-network
     restart: on-failure
@@ -74,6 +79,7 @@ services:
     image: my_ftp
     build: ./requirements/bonus/ftp
     container_name: ftp
+    init: true
     restart: on-failure
     ports:
       - "21:21"
