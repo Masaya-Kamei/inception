@@ -2,7 +2,7 @@ version: '3.8'
 
 services:
   nginx:
-    image: my_nginx
+    image: nginx:inception
     build: ./requirements/nginx
     container_name: nginx
     init: true
@@ -16,7 +16,7 @@ services:
       - adminer:/var/www/html/adminer
 
   wordpress:
-    image: my_wordpress
+    image: wordpress:inception
     build: ./requirements/wordpress
     container_name: wordpress
     init: true
@@ -40,7 +40,7 @@ services:
       WP_ADMIN_EMAIL: ${WP_ADMIN_EMAIL}
 
   mariadb:
-    image: my_mariadb
+    image: mariadb:inception
     build: ./requirements/mariadb
     container_name: mariadb
     init: true
@@ -56,7 +56,7 @@ services:
       DB_ROOT_USER_PASS: ${DB_ROOT_USER_PASS}
 
   redis:
-    image: my_redis
+    image: redis:inception
     build: ./requirements/bonus/redis
     container_name: redis
     init: true
@@ -65,7 +65,7 @@ services:
     restart: on-failure
 
   adminer:
-    image: my_adminer
+    image: adminer:inception
     build: ./requirements/bonus/adminer
     container_name: adminer
     init: true
@@ -76,7 +76,7 @@ services:
       - adminer:/var/www/html/adminer
 
   ftp:
-    image: my_ftp
+    image: ftp:inception
     build: ./requirements/bonus/ftp
     container_name: ftp
     init: true
