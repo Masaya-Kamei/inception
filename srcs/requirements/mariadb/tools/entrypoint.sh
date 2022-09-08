@@ -1,5 +1,10 @@
 #!/bin/ash
 
+if [ ! -d "/run/mysqld" ]; then
+	mkdir -p /run/mysqld
+	chown -R mysql:mysql /run/mysqld
+fi
+
 if [ -z "$(ls /var/lib/mysql)" ]; then
 	mariadb-install-db --user=mysql --datadir=/var/lib/mysql
 	mariadbd --user=mysql --datadir=/var/lib/mysql &

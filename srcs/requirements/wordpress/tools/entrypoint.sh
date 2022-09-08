@@ -31,6 +31,11 @@ PHP
 	  --admin_user=$WP_ADMIN_USER \
 	  --admin_password=$WP_ADMIN_PASS \
 	  --admin_email=$WP_ADMIN_EMAIL;
+	wp user create \
+    	$WP_AUTHOR_USER \
+    	$WP_AUTHOR_EMAIL \
+    	--role=author \
+    	--user_pass=$WP_AUTHOR_PASS;
 fi
 
 cd /var/www/html/wordpress
