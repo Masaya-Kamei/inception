@@ -8,7 +8,7 @@ services:
     init: true
     networks:
       - inception-network
-    restart: on-failure
+    restart: always
     ports:
       - "443:443"
     volumes:
@@ -22,7 +22,7 @@ services:
     init: true
     networks:
       - inception-network
-    restart: on-failure
+    restart: always
     depends_on:
       - mariadb
       - redis
@@ -49,7 +49,7 @@ services:
     init: true
     networks:
       - inception-network
-    restart: on-failure
+    restart: always
     volumes:
       - mariadb:/var/lib/mysql
     environment:
@@ -65,7 +65,7 @@ services:
     init: true
     networks:
       - inception-network
-    restart: on-failure
+    restart: always
 
   adminer:
     image: adminer:inception
@@ -74,7 +74,7 @@ services:
     init: true
     networks:
       - inception-network
-    restart: on-failure
+    restart: always
     volumes:
       - adminer:/var/www/html/adminer
 
@@ -83,7 +83,7 @@ services:
     build: ./requirements/bonus/ftp
     container_name: ftp
     init: true
-    restart: on-failure
+    restart: always
     ports:
       - "21:21"
       - "50001:50001"
