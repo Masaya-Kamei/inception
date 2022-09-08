@@ -17,7 +17,7 @@ build_no_cache: setup
 
 clean:
 	- docker-compose -f $(SRCSDIR)/docker-compose.yml down
-	- docker rmi my_nginx my_mariadb my_wordpress my_redis my_adminer my_ftp
+	- docker rmi nginx:inception mariadb:inception wordpress:inception redis:inception adminer:inception ftp:inception
 	- docker volume rm wordpress mariadb adminer
 	- sudo mv /etc/hosts.bak /etc/hosts
 	- sudo rm -rf /home/mkamei
