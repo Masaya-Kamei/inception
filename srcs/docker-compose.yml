@@ -95,6 +95,7 @@ services:
 networks:
   inception-network:
     name: inception-network
+    driver: bridge
 
 volumes:
   wordpress:
