@@ -100,22 +100,22 @@ networks:
 volumes:
   wordpress:
     name: wordpress
-    driver: local
-    driver_opts:
-      o: bind
-      type: none
-      device: /home/mkamei/data/wordpress
+    # driver: local
+    # driver_opts:
+    #   o: bind
+    #   type: none
+    #   device: /home/mkamei/data/wordpress
   mariadb:
     name: mariadb
-    driver: local
-    driver_opts:
-      o: bind
-      type: none
-      device: /home/mkamei/data/mariadb
+    # driver: local
+    # driver_opts:
+    #   o: bind
+    #   type: none
+    #   device: /home/mkamei/data/mariadb
   adminer:
     name: adminer
-    driver: local
-    driver_opts:
-      o: bind
-      type: none
-      device: /home/mkamei/data/adminer
+    # driver: local
+    # driver_opts:
+    #   o: bind
+    #   type: none
+    #   device: /home/mkamei/data/adminer
